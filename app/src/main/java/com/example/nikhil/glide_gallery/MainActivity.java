@@ -45,9 +45,16 @@ public class MainActivity extends AppCompatActivity {
                 //todo 9: This is our userr object
 
                 List<Photo> userr  = response.body();
+                int size = userr.size();
 
-                Log.d("Name",userr.get(0).getName());
-                Log.d("Url",userr.get(0).getUrl().getSmall());
+                for (int i=0;i<size;i++)
+                {
+
+                    Log.d("Name",userr.get(i).getName());
+                    Log.d("Url",userr.get(i).getUrl().getSmall());
+
+                }
+
 
             }
 
