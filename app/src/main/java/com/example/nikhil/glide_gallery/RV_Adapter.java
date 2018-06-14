@@ -25,13 +25,20 @@ public class RV_Adapter extends RecyclerView.Adapter<RV_Adapter.mViewHolder> {
 
     List<Photo> mphotos;
     Context mcontext;
+    List<Url> mURI;
 
     String murl;
 
     //Constructor
 
-    public RV_Adapter(List<Photo> photos) {
+    public RV_Adapter(Context context,List<Photo> photos) {
         this.mphotos = photos;
+        this.mcontext = context;
+    }
+
+    public RV_Adapter(List<Photo> mphotos, Context mcontext) {
+        this.mphotos = mphotos;
+        this.mcontext = mcontext;
     }
 
     @Override
