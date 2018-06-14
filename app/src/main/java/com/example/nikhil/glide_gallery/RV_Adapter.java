@@ -41,6 +41,7 @@ public class RV_Adapter extends RecyclerView.Adapter<RV_Adapter.myViewHolder> {
 
         Photo listPhotos = mphotos.get(position);
         holder.tv.setText(listPhotos.getName());
+        holder.url.setText(listPhotos.getUrl().getSmall());
 
     }
 
@@ -51,13 +52,15 @@ public class RV_Adapter extends RecyclerView.Adapter<RV_Adapter.myViewHolder> {
 
     public class myViewHolder extends RecyclerView.ViewHolder
     {
-        TextView tv;
+        TextView tv,url;
+
 
         public myViewHolder(View itemView) {
             super(itemView);
 
 
              tv = itemView.findViewById(R.id.ctv_id);
+             url = itemView.findViewById(R.id.c_tv_url);
         }
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -8,12 +8,25 @@
         android:layout_height="150dp"
         android:id="@+id/cv_id">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
         <TextView
+            android:id="@+id/c_tv_url"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/ctv_id"
-            android:hint="Testview"/>
+            android:layout_margin="20dp"
+            android:hint="URL" />
 
+            <TextView
+                android:id="@+id/ctv_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Testview" />
+
+        </LinearLayout>
     </android.support.v7.widget.CardView>
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
