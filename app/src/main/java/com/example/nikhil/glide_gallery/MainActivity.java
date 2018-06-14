@@ -2,6 +2,8 @@ package com.example.nikhil.glide_gallery;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -15,10 +17,31 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
+    RecyclerView recyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        initViews();
+
+        
+    }
+
+    private void initViews() {
+
+        recyclerView = findViewById(R.id.rv_id);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+        //recyclerView.setAdapter(getApplicationContext(),userr);
+        loadJson();
+
+    }
+
+    private void loadJson() {
 
 
         //todo 5: Retrofit instance
@@ -46,8 +69,14 @@ public class MainActivity extends AppCompatActivity {
 
                 List<Photo> userr  = response.body();
 
-                Log.d("Name",userr.get(0).getName());
-                Log.d("Url",userr.get(0).getUrl().getSmall());
+                recyclerView.setAdapter(new RV_Adapter(MainActivity.this,userr));
+
+
+
+
+                // Log.d("Name",userr.get(0).getName());
+                // Log.d("Url",userr.get(0).getUrl().getSmall());
+
 
             }
 
@@ -60,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        
+
+
     }
 }
