@@ -45,7 +45,7 @@ public class RV_Adapter extends RecyclerView.Adapter<RV_Adapter.myViewHolder> {
 
         Photo listPhotos = mphotos.get(position);
         holder.tv.setText(listPhotos.getName());
-        holder.url.setText(listPhotos.getUrl().getSmall());
+       // holder.url.setText(listPhotos.getUrl().getSmall());
         //String urll = holder.url.getText(listPhotos.getUrl().getSmall());
         String urll = listPhotos.getUrl().getLarge();
         Glide.with(mcontext).load(urll)
@@ -72,7 +72,7 @@ public class RV_Adapter extends RecyclerView.Adapter<RV_Adapter.myViewHolder> {
 
 
              tv = itemView.findViewById(R.id.ctv_id);
-             url = itemView.findViewById(R.id.c_tv_url);
+             //url = itemView.findViewById(R.id.c_tv_url);
              img = itemView.findViewById(R.id.c_img_id);
         }
     }
