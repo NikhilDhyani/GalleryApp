@@ -1,6 +1,8 @@
 package com.example.nikhil.glide_gallery;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,20 +42,32 @@ public class RV_Adapter extends RecyclerView.Adapter<RV_Adapter.myViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(myViewHolder holder, int position) {
+    public void onBindViewHolder(myViewHolder holder, final int position) {
 
 
         Photo listPhotos = mphotos.get(position);
         holder.tv.setText(listPhotos.getName());
        // holder.url.setText(listPhotos.getUrl().getSmall());
         //String urll = holder.url.getText(listPhotos.getUrl().getSmall());
-        String urll = listPhotos.getUrl().getLarge();
+        String urll = listPhotos.getUrl().getMedium();
         Glide.with(mcontext).load(urll)
                 .thumbnail(0.5f)
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.img);
 
+          //Setting onClickListner
+         holder.cardView.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+
+              Intent intent = new Intent(mcontext,Focus_Activity.class);
+
+              intent.putExtra("Title",mphotos.get(position).getName());
+              intent.putExtra("Photo",mphotos.get(position).getUrl().getLarge());
+              mcontext.startActivity(intent);
+             }
+         });
 
     }
 
@@ -66,10 +80,12 @@ public class RV_Adapter extends RecyclerView.Adapter<RV_Adapter.myViewHolder> {
     {
         TextView tv,url;
         ImageView img;
+        CardView cardView;
 
         public myViewHolder(View itemView) {
             super(itemView);
 
+            cardView = itemView.findViewById(R.id.cv_id);
 
              tv = itemView.findViewById(R.id.ctv_id);
              //url = itemView.findViewById(R.id.c_tv_url);

@@ -2,6 +2,7 @@ package com.example.nikhil.glide_gallery;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -34,8 +35,11 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.rv_id);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
+        //Changinging Linear Layout to Gride Layout
+        //recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+        recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),2));
         //recyclerView.setAdapter(getApplicationContext(),userr);
         loadJson();
 
